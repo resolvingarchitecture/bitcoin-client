@@ -38,6 +38,7 @@ impl BitcoinClient {
     pub fn handle(&mut self, packet: &mut Packet) {
         if !self.local_node_running {
             warn!("Local Bitcoin instance not running");
+            return;
         }
         info!("Handling incoming packet id={}", packet.id);
     }
