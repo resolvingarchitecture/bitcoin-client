@@ -12,7 +12,7 @@ A client for a local or remote Bitcoin instance.
 * Support service_bus crate
 * Receive message from local Bitcoin instance using CLI
 * Support remote Bitcoin instance using tor-client
-* Support remote Bitcion instance using i2p-client when/if supported
+* Support remote Bitcoin instance using i2p-client when/if supported
 
 [Crates.io](https://crates.io/crates/bitcoin_client)
 
