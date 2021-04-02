@@ -11,7 +11,7 @@ pub struct BitcoinClient {
 impl BitcoinClient {
     pub fn new() -> BitcoinClient {
         BitcoinClient {
-            rpc: Client::new("http://localhost:8332".to_string(),
+            rpc: Client::new("http://localhost:18444".to_string(),
                              Auth::UserPass(String::from(""),
                                             String::from(""))).unwrap(),
             local_node_running: false
@@ -19,7 +19,7 @@ impl BitcoinClient {
     }
     pub fn new_authenticated(username: String, passphrase: String) -> BitcoinClient {
         BitcoinClient {
-            rpc: Client::new("http://localhost:8332".to_string(),
+            rpc: Client::new("http://localhost:18444".to_string(),
                              Auth::UserPass(username.to_string(),
                                             passphrase.to_string())).unwrap(),
             local_node_running: false
@@ -32,7 +32,9 @@ impl BitcoinClient {
                 self.local_node_running = true;
                 info!("block count: {}", n);
             },
-            Err(e) => warn!("error: {}",e)
+            Err(e) => {
+                warn!("error: {}",e)
+            }
         }
     }
     pub fn handle(&mut self, packet: &mut Packet) {
