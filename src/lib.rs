@@ -9,19 +9,15 @@ pub struct BitcoinClient {
 }
 
 impl BitcoinClient {
-    pub fn new() -> BitcoinClient {
+    pub fn new(url: String) -> BitcoinClient {
         BitcoinClient {
-            rpc: Client::new("http://localhost:18444".to_string(),
-                             Auth::UserPass(String::from(""),
-                                            String::from(""))).unwrap(),
+            rpc: Client::new(url, Auth::UserPass(String::from(""), String::from(""))).unwrap(),
             local_node_running: false
         }
     }
-    pub fn new_authenticated(username: String, passphrase: String) -> BitcoinClient {
+    pub fn new_authenticated(url: String, username: String, passphrase: String) -> BitcoinClient {
         BitcoinClient {
-            rpc: Client::new("http://localhost:18444".to_string(),
-                             Auth::UserPass(username.to_string(),
-                                            passphrase.to_string())).unwrap(),
+            rpc: Client::new(url, Auth::UserPass(username.to_string(), passphrase.to_string())).unwrap(),
             local_node_running: false
         }
     }
